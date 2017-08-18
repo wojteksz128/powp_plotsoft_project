@@ -12,7 +12,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
-import edu.iis.powp.decorator.ModifyByStrategyDecorator;
+import edu.iis.powp.decorator.ModificationPlotterWrapper;
 import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
 import edu.iis.powp.events.SelectMoveRightOptionListener;
 import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
@@ -59,17 +59,17 @@ public class TestPlotterApp {
 	 */
 	private static void setupDrivers(Application application) {
 		IPlotter clientPlotter = new ClientPlotter();
-		clientPlotter = new ModifyByStrategyDecorator(clientPlotter);
+		clientPlotter = new ModificationPlotterWrapper(clientPlotter);
 		application.addDriver("Client Plotter", clientPlotter);
 
 		DrawPanelController drawerController = FeaturesManager.drawerController();
 		IPlotter plotter = new LineAdapterPlotterDriver(drawerController, LineFactory.getBasicLine(), "basic");
-		plotter = new ModifyByStrategyDecorator(plotter);
+		plotter = new ModificationPlotterWrapper(plotter);
 		application.addDriver("Line Simulator", plotter);
 		FeaturesManager.getDriverManager().setCurrentPlotter(plotter);
 
 		plotter = new LineAdapterPlotterDriver(drawerController, LineFactory.getSpecialLine(), "special");
-		plotter = new ModifyByStrategyDecorator(plotter);
+		plotter = new ModificationPlotterWrapper(plotter);
 		application.addDriver("Special line Simulator", plotter);
 		application.updateDriverInfo();
 	}
