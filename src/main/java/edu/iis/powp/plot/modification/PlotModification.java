@@ -1,9 +1,20 @@
 package edu.iis.powp.plot.modification;
 
-import java.util.List;
+import edu.iis.powp.decorator.Modifiable;
 
-import javafx.geometry.Point2D;
+public abstract class PlotModification {
 
-public interface PlotModification {
-    void modify(List<Point2D> points);
+    private boolean initialized = false;
+    protected Modifiable modificator;
+
+    public final boolean isInitialized() {
+        return initialized;
+    }
+
+    public void setUp(Modifiable modificator) {
+        initialized = true;
+        this.modificator = modificator;
+    }
+
+    abstract public void modify(PlotPoint point);
 }

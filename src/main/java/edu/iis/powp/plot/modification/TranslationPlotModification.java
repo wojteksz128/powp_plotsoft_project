@@ -1,21 +1,25 @@
 package edu.iis.powp.plot.modification;
 
-import java.util.List;
+import edu.iis.powp.decorator.Modifiable;
 
-import javafx.geometry.Point2D;
+public class TranslationPlotModification extends PlotModification {
 
-public class TranslationPlotModification implements PlotModification {
-
-    int x, y;
+    private PlotPoint point;
 
     public TranslationPlotModification(int x, int y) {
-        this.x = x;
-        this.y = y;
+        point = new PlotPoint(x, y);
     }
 
     @Override
-    public void modify(List<Point2D> points) {
-        points.forEach(point2D -> point2D.add(x, y));
+    public void setUp(Modifiable modificator) {
+        if (!isInitialized()) {
+            modificator.setCenterPoint(point);
+        }
+        super.setUp(modificator);
     }
 
+    @Override
+    public void modify(PlotPoint point) {
+        point.add(modificator.getCenterPoint());
+    }
 }
