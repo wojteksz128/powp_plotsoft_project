@@ -64,5 +64,8 @@ public class ModificationPlotterWrapper implements IPlotter, Modifiable {
         return null;
     }
 
-
+    @Override
+    public String toString() {
+        return instance + " with plot modifications";
+    }
 }
