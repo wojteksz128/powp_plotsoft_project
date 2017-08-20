@@ -1,9 +1,6 @@
-package edu.iis.powp.decorator;
+package edu.iis.powp.plot.modification;
 
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.plot.modification.PlotLine;
-import edu.iis.powp.plot.modification.PlotModification;
-import edu.iis.powp.plot.modification.PlotPoint;
 
 import java.util.ArrayList;
 import java.util.List;

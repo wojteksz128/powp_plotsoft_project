@@ -1,8 +1,4 @@
-package edu.iis.powp.decorator;
-
-import edu.iis.powp.plot.modification.PlotLine;
-import edu.iis.powp.plot.modification.PlotModification;
-import edu.iis.powp.plot.modification.PlotPoint;
+package edu.iis.powp.plot.modification;
 
 import java.util.List;
 

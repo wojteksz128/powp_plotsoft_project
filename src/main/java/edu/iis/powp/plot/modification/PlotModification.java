@@ -1,11 +1,9 @@
 package edu.iis.powp.plot.modification;
 
-import edu.iis.powp.decorator.PlotModifier;
-
 public abstract class PlotModification {
 
-    private boolean initialized = false;
     PlotModifier plotModifier;
+    private boolean initialized = false;
 
     final boolean isInitialized() {
         return initialized;

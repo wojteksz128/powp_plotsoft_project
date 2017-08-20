@@ -1,7 +1,5 @@
 package edu.iis.powp.plot.modification;
 
-import edu.iis.powp.decorator.PlotModifier;
-
 public class TranslationPlotModification extends PlotModification {
 
     private PlotPoint point;
