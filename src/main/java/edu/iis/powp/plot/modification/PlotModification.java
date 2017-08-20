@@ -2,17 +2,24 @@ package edu.iis.powp.plot.modification;
 
 public abstract class PlotModification {
 
-    PlotModifier plotModifier;
-    private boolean initialized = false;
+    /**
+     * Instance of {@link PlotModifier} object.
+     */
+    protected PlotModifier plotModifier;
 
-    final boolean isInitialized() {
-        return initialized;
-    }
-
+    /**
+     * Initialize configuration of modification.
+     *
+     * @param plotModifier instance of {@link PlotModifier} object
+     */
     public void setUp(PlotModifier plotModifier) {
-        initialized = true;
         this.plotModifier = plotModifier;
     }
 
+    /**
+     * Action of modification of point.
+     *
+     * @param point modified point
+     */
     abstract public void modify(PlotPoint point);
 }
