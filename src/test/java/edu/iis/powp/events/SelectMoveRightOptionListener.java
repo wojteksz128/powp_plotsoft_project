@@ -15,13 +15,13 @@ public class SelectMoveRightOptionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        PlotterCommandManager manager = FeaturesManager.getPlotterCommandManager();
-        IPlotter plotter = FeaturesManager.getDriverManager().getCurrentPlotter();
-        if (plotter instanceof Modifiable) {
-            manager.setCurrentCommand(((Modifiable) plotter).getModifiedCommands(new TranslationPlotModification(20, 0)), "Modified Command");
-        } else {
-            JOptionPane.showMessageDialog(null, "Plotter does not support modifications.");
-        }
+//        PlotterCommandManager manager = FeaturesManager.getPlotterCommandManager();
+//        IPlotter plotter = FeaturesManager.getDriverManager().getCurrentPlotter();
+//        if (plotter instanceof Modifiable) {
+//            manager.setCurrentCommand(((Modifiable) plotter).getModifiedCommands(new TranslationPlotModification(20, 0)), "Modified Command");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Plotter does not support modifications.");
+//        }
 
     }
 

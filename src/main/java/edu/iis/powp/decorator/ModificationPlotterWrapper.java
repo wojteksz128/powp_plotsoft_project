@@ -1,10 +1,14 @@
 package edu.iis.powp.decorator;
 
+import edu.iis.powp.plot.modification.PlotLine;
+import edu.iis.powp.plot.modification.PlotPoint;
 import javafx.geometry.Point2D;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.command.DrawToCommand;
@@ -15,8 +19,11 @@ import edu.iis.powp.plot.modification.PlotModification;
 public class ModificationPlotterWrapper implements IPlotter, Modifiable {
 
     private IPlotter instance;
-    List<Point2D> points;
-    List<IPlotterCommand> commands;
+    private List<Point2D> points;
+    private List<IPlotterCommand> commands;
+    private Map<PlotModification, Boolean> modifications;
+    private PlotPoint centerPoint;
+    private PlotLine mirrorLine;
 
 
     public ModificationPlotterWrapper(IPlotter cpy) {
@@ -40,12 +47,33 @@ public class ModificationPlotterWrapper implements IPlotter, Modifiable {
     }
 
     @Override
-    public List<IPlotterCommand> getModifiedCommands(PlotModification strategy) {
-        strategy.modify(points);
-        List<IPlotterCommand> newCommands = getCommands();
-        commands.clear();
-        points.clear();
-        return newCommands;
+    public void addModification(PlotModification modification) {
+        modifications.put(modification, false);
+    }
+
+    @Override
+    public void removeModification(PlotModification modification) {
+        modifications.remove(modification);
+    }
+
+    @Override
+    public List<PlotModification> getModifications() {
+        return new ArrayList<>(modifications.keySet());
+    }
+
+    @Override
+    public void clearModifications() {
+        modifications.clear();
+    }
+
+    @Override
+    public void setCenterPoint(PlotPoint point) {
+        this.centerPoint = point;
+    }
+
+    @Override
+    public void setMirrorLine(PlotLine line) {
+        this.mirrorLine = line;
     }
 
     private List<IPlotterCommand> getCommands() {
