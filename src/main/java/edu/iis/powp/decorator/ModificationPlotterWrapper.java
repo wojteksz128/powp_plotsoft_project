@@ -8,7 +8,7 @@ import edu.iis.powp.plot.modification.PlotPoint;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModificationPlotterWrapper implements IPlotter, Modifiable {
+public class ModificationPlotterWrapper implements IPlotter, PlotModifier {
 
     private IPlotter instance;
     private List<PlotModification> modifications;

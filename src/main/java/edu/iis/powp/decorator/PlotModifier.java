@@ -6,7 +6,7 @@ import edu.iis.powp.plot.modification.PlotPoint;
 
 import java.util.List;
 
-public interface Modifiable {
+public interface PlotModifier {
     void addModification(PlotModification modification);
 
     void removeModification(PlotModification modification);

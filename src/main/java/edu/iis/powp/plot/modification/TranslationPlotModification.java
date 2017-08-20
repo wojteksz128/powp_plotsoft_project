@@ -1,6 +1,6 @@
 package edu.iis.powp.plot.modification;
 
-import edu.iis.powp.decorator.Modifiable;
+import edu.iis.powp.decorator.PlotModifier;
 
 public class TranslationPlotModification extends PlotModification {
 
@@ -11,15 +11,15 @@ public class TranslationPlotModification extends PlotModification {
     }
 
     @Override
-    public void setUp(Modifiable modificator) {
+    public void setUp(PlotModifier plotModifier) {
         if (!isInitialized()) {
-            modificator.setCenterPoint(point);
+            plotModifier.setCenterPoint(point);
         }
-        super.setUp(modificator);
+        super.setUp(plotModifier);
     }
 
     @Override
     public void modify(PlotPoint point) {
-        point.add(modificator.getCenterPoint());
+        point.add(plotModifier.getCenterPoint());
     }
 }
