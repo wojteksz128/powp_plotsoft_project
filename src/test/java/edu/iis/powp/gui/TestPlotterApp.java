@@ -7,10 +7,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
-import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
-import edu.iis.powp.events.SelectMoveRightOptionListener;
-import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
-import edu.iis.powp.events.SelectTestFigure2OptionListener;
+import edu.iis.powp.events.*;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.plot.modification.ModificationPlotterWrapper;
 import edu.kis.powp.drawer.panel.DrawPanelController;
@@ -47,6 +44,7 @@ public class TestPlotterApp {
 	private static void setupCommandTests(Application application) {
 		application.addTest("Load secret command", new SelectLoadSecretCommandOptionListener());
 		application.addTest("Load moving right exected command", new SelectMoveRightOptionListener());
+		application.addTest("Load rotation 90 degrees command", new SelectRotate90DegreesOptionListener());
 		application.addTest("Run command", new SelectRunCurrentCommandOptionListener());
 
 	}

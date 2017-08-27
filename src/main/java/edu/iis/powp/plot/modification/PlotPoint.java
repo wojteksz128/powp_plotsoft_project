@@ -55,6 +55,24 @@ public class PlotPoint {
     }
 
     /**
+     * {@link PlotPoint#x} setter.
+     *
+     * @param x new value on x-axis
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    /**
+     * {@link PlotPoint#y} setter.
+     *
+     * @param y new value on y-axis
+     */
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    /**
      * Increment point coordinates used coordinates other {@link PlotPoint} object.
      *
      * @param point coords of other point
@@ -74,5 +92,4 @@ public class PlotPoint {
         this.x = x;
         this.y = y;
     }
-
 }
