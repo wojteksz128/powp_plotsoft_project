@@ -6,10 +6,39 @@ package edu.iis.powp.plot.modification;
 public class StretchPlotModification extends PlotModification {
 
     /**
+     * X-axis stretching scale. If {@code 1.0}, then no stretching.
+     */
+    private float xAxis;
+
+    /**
+     * Y-axis stretching scale. If {@code 1.0}, then no stretching.
+     */
+    private float yAxis;
+
+    /**
+     * Constructor of (@link {@link StretchPlotModification}.
+     *
+     * @param xAxis x-axis stretching scale. If {@code 1.0}, then no stretching.
+     * @param yAxis y-axis stretching scale. If {@code 1.0}, then no stretching.
+     */
+    public StretchPlotModification(float xAxis, float yAxis) {
+        if (xAxis < 0 || yAxis < 0) {
+            throw new IllegalArgumentException("Stretching scale must be unsigned value");
+        }
+        this.xAxis = xAxis;
+        this.yAxis = yAxis;
+    }
+
+    /**
      * @see PlotModification#modify(PlotPoint)
      */
     @Override
     public void modify(PlotPoint point) {
-        // TODO: Wojciech Szczepaniak: Do implementacji
+        int x = point.getX() - plotModifier.getCenterPoint().getX();
+        int y = point.getY() - plotModifier.getCenterPoint().getY();
+
+        int x1 = Math.round((xAxis - 1) * x);
+        int y1 = Math.round((yAxis - 1) * y);
+        point.add(x1, y1);
     }
 }

@@ -29,7 +29,6 @@ public class RotationPlotModification extends PlotModification {
      */
     @Override
     public void modify(PlotPoint point) {
-        // TODO: Wojciech Szczepaniak: Do implementacji
         int x = point.getX();
         int y = point.getY();
         int xu = plotModifier.getCenterPoint().getX();

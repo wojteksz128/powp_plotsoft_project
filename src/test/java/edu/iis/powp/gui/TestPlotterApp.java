@@ -45,6 +45,7 @@ public class TestPlotterApp {
 		application.addTest("Load secret command", new SelectLoadSecretCommandOptionListener());
 		application.addTest("Load moving right exected command", new SelectMoveRightOptionListener());
 		application.addTest("Load rotation 90 degrees command", new SelectRotate90DegreesOptionListener());
+		application.addTest("Load stretch 1.5 height command", new SelectStretchHeightOneAndHalfOptionListener());
 		application.addTest("Run command", new SelectRunCurrentCommandOptionListener());
 
 	}

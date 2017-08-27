@@ -89,7 +89,7 @@ public class PlotPoint {
      * @param y value increment y-axis value
      */
     public void add(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.x += x;
+        this.y += y;
     }
 }
