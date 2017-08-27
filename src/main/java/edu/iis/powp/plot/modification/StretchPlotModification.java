@@ -16,7 +16,7 @@ public class StretchPlotModification extends PlotModification {
     private float yAxis;
 
     /**
-     * Constructor of (@link {@link StretchPlotModification}.
+     * Constructor of {@link StretchPlotModification}.
      *
      * @param xAxis x-axis stretching scale. If {@code 1.0}, then no stretching.
      * @param yAxis y-axis stretching scale. If {@code 1.0}, then no stretching.

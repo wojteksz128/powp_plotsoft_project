@@ -6,10 +6,36 @@ package edu.iis.powp.plot.modification;
 public class ScalePlotModification extends PlotModification {
 
     /**
+     * Instance of similar plot modification - {@link StretchPlotModification}.
+     */
+    private final PlotModification stretchPlotModification;
+
+    /**
+     * Scale of plot
+     */
+    private float scale;
+
+    /**
+     * Constructor of {@link ScalePlotModification}.
+     *
+     * @param scale scale of plot.
+     */
+    public ScalePlotModification(float scale) {
+        this.scale = scale;
+        this.stretchPlotModification = new StretchPlotModification(scale, scale);
+    }
+
+    @Override
+    public void setUp(PlotModifier plotModifier) {
+        super.setUp(plotModifier);
+        stretchPlotModification.setUp(plotModifier);
+    }
+
+    /**
      * @see PlotModification#modify(PlotPoint)
      */
     @Override
     public void modify(PlotPoint point) {
-        // TODO: Wojciech Szczepaniak: Do implementacji
+        stretchPlotModification.modify(point);
     }
 }
