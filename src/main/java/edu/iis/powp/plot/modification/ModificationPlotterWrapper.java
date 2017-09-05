@@ -1,6 +1,7 @@
 package edu.iis.powp.plot.modification;
 
 import edu.iis.client.plottermagic.IPlotter;
+import edu.iis.powp.appext.FeaturesManager;
 
 import java.util.ArrayList;
 import java.util.List;

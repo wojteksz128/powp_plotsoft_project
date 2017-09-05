@@ -10,7 +10,15 @@ public class TranslationPlotModification extends PlotModification {
      */
     private PlotPoint point;
 
-    /**
+    public PlotPoint getPoint() {
+		return point;
+	}
+
+	public void setPoint(PlotPoint point) {
+		this.point = point;
+	}
+
+	/**
      * Constructor of {@link TranslationPlotModification}.
      *
      * @param x value on x-axis
@@ -34,6 +42,7 @@ public class TranslationPlotModification extends PlotModification {
      */
     @Override
     public void modify(PlotPoint point) {
+        plotModifier.setCenterPoint(this.point);
         point.add(plotModifier.getCenterPoint());
     }
 }

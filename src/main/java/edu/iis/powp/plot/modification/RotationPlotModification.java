@@ -10,7 +10,15 @@ public class RotationPlotModification extends PlotModification {
      */
     private int angle;
 
-    /**
+    public int getAngle() {
+		return angle;
+	}
+
+	public void setAngle(int angle) {
+		this.angle = angle;
+	}
+
+	/**
      * Constructor of {@link RotationPlotModification}.
      *
      * @param angle angle in degrees

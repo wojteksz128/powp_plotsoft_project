@@ -15,7 +15,15 @@ public class ScalePlotModification extends PlotModification {
      */
     private float scale;
 
-    /**
+    public float getScale() {
+		return scale;
+	}
+
+	public void setScale(float scale) {
+		this.scale = scale;
+	}
+
+	/**
      * Constructor of {@link ScalePlotModification}.
      *
      * @param scale scale of plot.

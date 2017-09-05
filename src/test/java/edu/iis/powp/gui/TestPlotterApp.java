@@ -1,5 +1,15 @@
 package edu.iis.powp.gui;
 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.LineAdapterPlotterDriver;
@@ -7,16 +17,18 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
-import edu.iis.powp.events.*;
+import edu.iis.powp.events.SelectHalfScaleOptionListener;
+import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
+import edu.iis.powp.events.SelectMoveRightOptionListener;
+import edu.iis.powp.events.SelectRotate90DegreesOptionListener;
+import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
+import edu.iis.powp.events.SelectStretchHeightOneAndHalfOptionListener;
+import edu.iis.powp.events.SelectTestFigure2OptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.modification.listeners.ModifyButtonListener;
 import edu.iis.powp.plot.modification.ModificationPlotterWrapper;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.LineFactory;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TestPlotterApp {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -72,6 +84,7 @@ public class TestPlotterApp {
 		plotter = new ModificationPlotterWrapper(plotter);
 		application.addDriver("Special line Simulator", plotter);
 		application.updateDriverInfo();
+		
 	}
 
 	private static void setupWindows(Application application) {
@@ -103,6 +116,66 @@ public class TestPlotterApp {
 				(ActionEvent e) -> logger.setLevel(Level.SEVERE));
 		application.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> logger.setLevel(Level.OFF));
 	}
+	
+	/**
+	 * Setup tool bar for navigating and editing the plot.
+	 * 
+	 * @param application
+	 *            Application context.
+	 */
+	private static void setupToolBar(Application application) {
+		JToolBar toolbar = new JToolBar("Applications");
+		setupButtons(application, toolbar);
+        application.getFreePanel().setLayout(new BorderLayout());
+        application.getFreePanel().add(toolbar, BorderLayout.PAGE_START);
+	}
+	
+	/**
+	 * Setup buttons for tool bar.
+	 * 
+	 * @param application
+	 *            Application context.
+	 */
+	private static void setupButtons(Application application, JToolBar toolbar) {
+		ButtonGroup button_group = new ButtonGroup();
+		ModifyButtonListener toolBarListener = new ModifyButtonListener(application);
+		
+		JToggleButton pointerBtn = new JToggleButton("POINTER");
+		pointerBtn.setName("pointerButton");
+		pointerBtn.addActionListener(toolBarListener);
+		button_group.add(pointerBtn);
+        toolbar.add(pointerBtn);
+		
+		JToggleButton moveBtn = new JToggleButton("MOVE");
+		moveBtn.setName("moveButton");
+		moveBtn.addActionListener(toolBarListener);
+		button_group.add(moveBtn);
+        toolbar.add(moveBtn);
+        
+		JToggleButton rotateBtn = new JToggleButton("ROTATE");
+		moveBtn.setName("rotateButton");
+		moveBtn.addActionListener(toolBarListener);
+		button_group.add(rotateBtn);
+        toolbar.add(rotateBtn);
+        
+		JToggleButton scaleBtn = new JToggleButton("SCALE");
+		moveBtn.setName("scaleButton");
+		moveBtn.addActionListener(toolBarListener);
+		button_group.add(scaleBtn);
+        toolbar.add(scaleBtn);
+        
+		JToggleButton stretchBtn = new JToggleButton("STRETCH");
+		moveBtn.setName("stretchButton");
+		moveBtn.addActionListener(toolBarListener);
+		button_group.add(stretchBtn);
+        toolbar.add(stretchBtn);
+        
+		JToggleButton reflectBtn = new JToggleButton("REFLECT");
+		moveBtn.setName("reflectButton");
+		moveBtn.addActionListener(toolBarListener);
+		button_group.add(reflectBtn);
+        toolbar.add(reflectBtn);
+	}
 
 	/**
 	 * Launch the application.
@@ -118,6 +191,7 @@ public class TestPlotterApp {
 				setupCommandTests(app);
 				setupLogger(app);
 				setupWindows(app);
+				setupToolBar(app);
 
 				app.setVisibility(true);
 			}
