@@ -43,13 +43,18 @@ public abstract class ModificationMouseAdapter extends MouseInputAdapter {
     public void mouseReleased(MouseEvent e) {
         update(e);
 		FeaturesManager.drawerController().clearPanel();
+		try{
 		FeaturesManager.getPlotterCommandManager().getCurrentCommand()
 		.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
+		
+		}catch(Exception e1) {
+			e1.printStackTrace();
+		}
 		modification = getModification();
 		prev_x = e.getX();
 		prev_y = e.getY();
     }
 	
-	abstract void update(MouseEvent e);
-	abstract PlotModification getModification();
+	protected abstract void update(MouseEvent e);
+	abstract protected PlotModification getModification();
 }

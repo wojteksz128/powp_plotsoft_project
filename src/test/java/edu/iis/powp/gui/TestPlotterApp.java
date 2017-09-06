@@ -3,10 +3,12 @@ package edu.iis.powp.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
@@ -27,12 +29,12 @@ import edu.iis.powp.events.SelectTestFigure2OptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.modification.listeners.ModifyButtonListener;
 import edu.iis.powp.plot.modification.ModificationPlotterWrapper;
+import edu.iis.powp.plot.modification.PlotModifier;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.LineFactory;
 
 public class TestPlotterApp {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
 	/**
 	 * Setup test concerning preset figures in context.
 	 * 
@@ -153,28 +155,58 @@ public class TestPlotterApp {
         toolbar.add(moveBtn);
         
 		JToggleButton rotateBtn = new JToggleButton("ROTATE");
-		moveBtn.setName("rotateButton");
-		moveBtn.addActionListener(toolBarListener);
+		rotateBtn.setName("rotateButton");
+		rotateBtn.addActionListener(toolBarListener);
 		button_group.add(rotateBtn);
         toolbar.add(rotateBtn);
         
 		JToggleButton scaleBtn = new JToggleButton("SCALE");
-		moveBtn.setName("scaleButton");
-		moveBtn.addActionListener(toolBarListener);
+		scaleBtn.setName("scaleButton");
+		scaleBtn.addActionListener(toolBarListener);
 		button_group.add(scaleBtn);
         toolbar.add(scaleBtn);
         
 		JToggleButton stretchBtn = new JToggleButton("STRETCH");
-		moveBtn.setName("stretchButton");
-		moveBtn.addActionListener(toolBarListener);
+		stretchBtn.setName("stretchButton");
+		stretchBtn.addActionListener(toolBarListener);
 		button_group.add(stretchBtn);
         toolbar.add(stretchBtn);
         
 		JToggleButton reflectBtn = new JToggleButton("REFLECT");
-		moveBtn.setName("reflectButton");
-		moveBtn.addActionListener(toolBarListener);
+		reflectBtn.setName("reflectButton");
+		reflectBtn.addActionListener(toolBarListener);
 		button_group.add(reflectBtn);
         toolbar.add(reflectBtn);
+        
+		JButton resetBtn = new JButton("RESET");
+		resetBtn.setName("resetButton");
+		resetBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(application.getDriverManager().getCurrentPlotter() instanceof PlotModifier) {
+					PlotModifier modifier = (PlotModifier)application.getDriverManager().getCurrentPlotter();
+					modifier.clearModifications();
+					FeaturesManager.drawerController().clearPanel();
+					FeaturesManager.getPlotterCommandManager().getCurrentCommand()
+					.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
+				}
+			}
+		});
+		button_group.add(resetBtn);
+        toolbar.add(resetBtn);
+        
+		JButton applyBtn = new JButton("APPLY");
+		applyBtn.setName("applyButton");
+		applyBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				application.getDriverManager().applyModifications();
+			}
+		});
+		button_group.add(applyBtn);
+        toolbar.add(applyBtn);
 	}
 
 	/**

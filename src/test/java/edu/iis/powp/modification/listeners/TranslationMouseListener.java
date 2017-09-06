@@ -14,11 +14,13 @@ import edu.iis.powp.plot.modification.TranslationPlotModification;
 
 
 public class TranslationMouseListener extends ModificationMouseAdapter  {
-
-	PlotModification getModification() {
+	@Override
+	protected PlotModification getModification() {
 		return new TranslationPlotModification(0, 0);
 	}
-
+	
+	@Override
+	protected
     void update(MouseEvent e) {
     	TranslationPlotModification modification = (TranslationPlotModification) super.modification;
     	int x_d = e.getX() - super.prev_x;

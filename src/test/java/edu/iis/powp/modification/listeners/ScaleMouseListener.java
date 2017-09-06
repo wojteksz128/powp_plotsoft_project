@@ -11,6 +11,7 @@ import edu.iis.powp.plot.modification.ScalePlotModification;
 public class ScaleMouseListener extends ModificationMouseAdapter {
 
 	@Override
+	protected
 	void update(MouseEvent e) {
 		ScalePlotModification modification = (ScalePlotModification) super.modification;
     	int x_d = e.getX() - super.prev_x;
@@ -19,7 +20,7 @@ public class ScaleMouseListener extends ModificationMouseAdapter {
 	}
 
 	@Override
-	PlotModification getModification() {
+	protected PlotModification getModification() {
 		return new ScalePlotModification(0);
 	}
 

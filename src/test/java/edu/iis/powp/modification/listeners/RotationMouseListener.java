@@ -10,11 +10,11 @@ import edu.iis.powp.plot.modification.RotationPlotModification;
 import edu.iis.powp.plot.modification.TranslationPlotModification;
 
 public class RotationMouseListener extends ModificationMouseAdapter {
-	PlotModification getModification() {
+	protected PlotModification getModification() {
 		return new RotationPlotModification(0);
 	}
 
-    void update(MouseEvent e) {
+    protected void update(MouseEvent e) {
     	RotationPlotModification modification = (RotationPlotModification) super.modification;
     	int x_d = e.getX() - super.prev_x;
     	int y_d = e.getY() - super.prev_y;

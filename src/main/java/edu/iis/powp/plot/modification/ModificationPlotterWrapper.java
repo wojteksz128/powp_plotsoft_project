@@ -40,6 +40,7 @@ public class ModificationPlotterWrapper implements IPlotter, PlotModifier {
      */
     @Override
     public void drawTo(int x, int y) {
+
         PlotPoint point = new PlotPoint(x, y);
         modifications.forEach(modification -> {
             modification.setUp(this);

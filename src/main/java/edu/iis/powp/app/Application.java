@@ -11,6 +11,7 @@ import edu.iis.powp.app.gui.PlotterGUI;
 import edu.iis.powp.app.gui.events.SelectDriverMenuOptionListener;
 import edu.iis.powp.app.gui.events.SelectJFrameWindowMenuOptionListener;
 import edu.iis.powp.app.gui.events.SelectWindowComponentMenuOptionListener;
+import edu.iis.powp.modification.ModifierDriverManager;
 import edu.iis.powp.observer.Subscriber;
 import edu.iis.powp.window.WindowComponent;
 
@@ -20,13 +21,13 @@ import edu.iis.powp.window.WindowComponent;
 public class Application {
 	private PlotterGUI gui = new PlotterGUI();
 
-	private DriverManager driverManager = new DriverManager();
+	private ModifierDriverManager driverManager = new ModifierDriverManager();
 
 	public Application() {
 		driverManager.getChangePublisher().addSubscriber(new DriverChangeSubscriber());
 	}
 
-	public DriverManager getDriverManager() {
+	public ModifierDriverManager getDriverManager() {
 		return driverManager;
 	}
 

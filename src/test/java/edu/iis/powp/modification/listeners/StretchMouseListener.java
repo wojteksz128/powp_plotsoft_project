@@ -11,6 +11,7 @@ import edu.iis.powp.plot.modification.StretchPlotModification;
 public class StretchMouseListener extends ModificationMouseAdapter {
 
 	@Override
+	protected
 	void update(MouseEvent e) {
 		StretchPlotModification modification = (StretchPlotModification) super.modification;
     	int x_d = e.getX() - super.prev_x;
@@ -20,7 +21,7 @@ public class StretchMouseListener extends ModificationMouseAdapter {
 	}
 
 	@Override
-	PlotModification getModification() {
+	protected PlotModification getModification() {
 		return new StretchPlotModification(0f, 0f);
 	}
 
