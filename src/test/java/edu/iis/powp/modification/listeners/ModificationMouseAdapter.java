@@ -34,7 +34,7 @@ public abstract class ModificationMouseAdapter extends MouseInputAdapter {
 	@Override
     public void mouseDragged(MouseEvent e) {
         update(e);
-        redraw();
+        FeaturesManager.reDraw();
 		prev_x = e.getX();
 		prev_y = e.getY();
     }
@@ -42,24 +42,13 @@ public abstract class ModificationMouseAdapter extends MouseInputAdapter {
 	@Override
     public void mouseReleased(MouseEvent e) {
         update(e);
-        redraw();
+        FeaturesManager.reDraw();
 		modification = getModification();
 		prev_x = e.getX();
 		prev_y = e.getY();
     }
 	
-	private void redraw() {
-		if(FeaturesManager.getPlotterCommandManager().getCurrentCommand() != null) {
-			FeaturesManager.drawerController().clearPanel();
-			IPlotterCommand command = FeaturesManager.getPlotterCommandManager().getCurrentCommand();
-			FeaturesManager.getPlotterCommandManager().clearCurrentCommand();
-			command.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
-			FeaturesManager.getPlotterCommandManager().setCurrentCommand(command);
-		} else {
-			Logger.getGlobal().info("Redraw functionality is disabled");
-		}
-	}
-	
+
 	protected abstract void update(MouseEvent e);
 	abstract protected PlotModification getModification();
 }

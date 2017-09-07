@@ -190,9 +190,7 @@ public class TestPlotterApp {
 				if(application.getDriverManager().getCurrentPlotter() instanceof PlotModifier) {
 					PlotModifier modifier = (PlotModifier)application.getDriverManager().getCurrentPlotter();
 					modifier.clearModifications();
-					FeaturesManager.drawerController().clearPanel();
-					FeaturesManager.getPlotterCommandManager().getCurrentCommand()
-					.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
+					FeaturesManager.reDraw();
 				}
 			}
 		});

@@ -2,6 +2,7 @@ package edu.iis.powp.plot.modification;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.appext.FeaturesManager;
+import edu.iis.powp.command.manager.Redrawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * Implementation of {@link PlotModifier} interface used to simple modifying of plot for example: change of scale,
  * rotation, etc.
  */
-public class ModificationPlotterWrapper implements IPlotter, PlotModifier {
+public class ModificationPlotterWrapper implements IPlotter, PlotModifier, Redrawable {
 
     private IPlotter instance;
     private List<PlotModification> modifications;
@@ -139,4 +140,9 @@ public class ModificationPlotterWrapper implements IPlotter, PlotModifier {
     public String toString() {
         return instance + " with plot modifications";
     }
+
+	@Override
+	public boolean isRedrawable() {
+		return instance instanceof Redrawable;
+	}
 }

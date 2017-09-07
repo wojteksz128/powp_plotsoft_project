@@ -7,7 +7,7 @@ import edu.iis.powp.command.DrawToCommand;
 import edu.iis.powp.command.IPlotterCommand;
 import edu.iis.powp.command.SetPositionCommand;
 
-public class RedrawablePlotterDecorator implements IPlotter {
+public class RedrawablePlotterDecorator implements IPlotter, Redrawable {
 
 	private IPlotter instance;
 	private PlotterCommandManager commandManager;
@@ -59,6 +59,11 @@ public class RedrawablePlotterDecorator implements IPlotter {
 		}
 		instance.setPosition(arg0, arg1);
 		System.out.println("setpos: " + arg0+ " " + arg1);
+	}
+
+	@Override
+	public boolean isRedrawable() {
+		return true;
 	}
 
 }
