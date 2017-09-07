@@ -19,6 +19,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
+import edu.iis.powp.command.manager.RedrawablePlotterDecorator;
 import edu.iis.powp.events.SelectHalfScaleOptionListener;
 import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
 import edu.iis.powp.events.SelectMoveRightOptionListener;
@@ -78,11 +79,13 @@ public class TestPlotterApp {
 
 		DrawPanelController drawerController = FeaturesManager.drawerController();
 		IPlotter plotter = new LineAdapterPlotterDriver(drawerController, LineFactory.getBasicLine(), "basic");
+		plotter = new RedrawablePlotterDecorator(plotter, FeaturesManager.getPlotterCommandManager());
 		plotter = new ModificationPlotterWrapper(plotter);
 		application.addDriver("Line Simulator", plotter);
 		FeaturesManager.getDriverManager().setCurrentPlotter(plotter);
 
 		plotter = new LineAdapterPlotterDriver(drawerController, LineFactory.getSpecialLine(), "special");
+		plotter = new RedrawablePlotterDecorator(plotter, FeaturesManager.getPlotterCommandManager());
 		plotter = new ModificationPlotterWrapper(plotter);
 		application.addDriver("Special line Simulator", plotter);
 		application.updateDriverInfo();

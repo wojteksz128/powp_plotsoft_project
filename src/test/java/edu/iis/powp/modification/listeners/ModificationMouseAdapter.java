@@ -1,14 +1,16 @@
 package edu.iis.powp.modification.listeners;
 
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 import javax.swing.event.MouseInputAdapter;
 
 import edu.iis.powp.appext.FeaturesManager;
+import edu.iis.powp.command.IPlotterCommand;
+import edu.iis.powp.command.manager.RedrawablePlotterDecorator;
 import edu.iis.powp.plot.modification.PlotModification;
 import edu.iis.powp.plot.modification.PlotModifier;
-import edu.iis.powp.plot.modification.PlotPoint;
-import edu.iis.powp.plot.modification.TranslationPlotModification;
+
 
 public abstract class ModificationMouseAdapter extends MouseInputAdapter {
 	protected PlotModification modification;
@@ -32,9 +34,7 @@ public abstract class ModificationMouseAdapter extends MouseInputAdapter {
 	@Override
     public void mouseDragged(MouseEvent e) {
         update(e);
-		FeaturesManager.drawerController().clearPanel();
-		FeaturesManager.getPlotterCommandManager().getCurrentCommand()
-		.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
+        redraw();
 		prev_x = e.getX();
 		prev_y = e.getY();
     }
@@ -42,18 +42,23 @@ public abstract class ModificationMouseAdapter extends MouseInputAdapter {
 	@Override
     public void mouseReleased(MouseEvent e) {
         update(e);
-		FeaturesManager.drawerController().clearPanel();
-		try{
-		FeaturesManager.getPlotterCommandManager().getCurrentCommand()
-		.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
-		
-		}catch(Exception e1) {
-			e1.printStackTrace();
-		}
+        redraw();
 		modification = getModification();
 		prev_x = e.getX();
 		prev_y = e.getY();
     }
+	
+	private void redraw() {
+		if(FeaturesManager.getPlotterCommandManager().getCurrentCommand() != null) {
+			FeaturesManager.drawerController().clearPanel();
+			IPlotterCommand command = FeaturesManager.getPlotterCommandManager().getCurrentCommand();
+			FeaturesManager.getPlotterCommandManager().clearCurrentCommand();
+			command.execute(FeaturesManager.getDriverManager().getCurrentPlotter());
+			FeaturesManager.getPlotterCommandManager().setCurrentCommand(command);
+		} else {
+			Logger.getGlobal().info("Redraw functionality is disabled");
+		}
+	}
 	
 	protected abstract void update(MouseEvent e);
 	abstract protected PlotModification getModification();
