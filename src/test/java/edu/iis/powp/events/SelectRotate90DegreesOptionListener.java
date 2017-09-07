@@ -4,7 +4,7 @@ import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.plot.modification.PlotModifier;
 import edu.iis.powp.plot.modification.RotationPlotModification;
-import edu.iis.powp.plot.modification.TranslationPlotModification;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

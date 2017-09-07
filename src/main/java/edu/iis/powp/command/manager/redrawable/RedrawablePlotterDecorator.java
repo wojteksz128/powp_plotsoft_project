@@ -1,4 +1,4 @@
-package edu.iis.powp.command.manager;
+package edu.iis.powp.command.manager.redrawable;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,11 @@ import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.command.DrawToCommand;
 import edu.iis.powp.command.IPlotterCommand;
 import edu.iis.powp.command.SetPositionCommand;
+import edu.iis.powp.command.manager.PlotterCommandManager;
 
+/**
+ * Decorator that saves commands to PlotterCommandManager.
+ */
 public class RedrawablePlotterDecorator implements IPlotter, Redrawable {
 
 	private IPlotter instance;

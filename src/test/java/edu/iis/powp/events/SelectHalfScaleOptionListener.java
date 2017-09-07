@@ -4,7 +4,6 @@ import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.plot.modification.PlotModifier;
 import edu.iis.powp.plot.modification.ScalePlotModification;
-import edu.iis.powp.plot.modification.StretchPlotModification;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

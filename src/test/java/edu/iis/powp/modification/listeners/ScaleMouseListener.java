@@ -2,10 +2,7 @@ package edu.iis.powp.modification.listeners;
 
 import java.awt.event.MouseEvent;
 
-import javax.swing.event.MouseInputAdapter;
-
 import edu.iis.powp.plot.modification.PlotModification;
-import edu.iis.powp.plot.modification.RotationPlotModification;
 import edu.iis.powp.plot.modification.ScalePlotModification;
 
 public class ScaleMouseListener extends ModificationMouseAdapter {

@@ -8,7 +8,7 @@ import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.command.IPlotterCommand;
 import edu.iis.powp.command.manager.LoggerCommandChangeObserver;
 import edu.iis.powp.command.manager.PlotterCommandManager;
-import edu.iis.powp.command.manager.Redrawable;
+import edu.iis.powp.command.manager.redrawable.Redrawable;
 import edu.iis.powp.events.predefine.SelectClearPanelOptionListener;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 
@@ -84,6 +84,10 @@ public class FeaturesManager {
 		return commandManager;
 	}
 	
+	/**
+	 * Redraw current saved command without modifications
+	 * 
+	 */
 	public static void reDraw() {
 		IPlotter currentPlotter = driverManager.getCurrentPlotter();
 		if(currentPlotter instanceof Redrawable && ((Redrawable) currentPlotter).isRedrawable()) {

@@ -19,7 +19,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
-import edu.iis.powp.command.manager.RedrawablePlotterDecorator;
+import edu.iis.powp.command.manager.redrawable.RedrawablePlotterDecorator;
 import edu.iis.powp.events.SelectHalfScaleOptionListener;
 import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
 import edu.iis.powp.events.SelectMoveRightOptionListener;

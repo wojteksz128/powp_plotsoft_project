@@ -1,8 +1,7 @@
 package edu.iis.powp.plot.modification;
 
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.appext.FeaturesManager;
-import edu.iis.powp.command.manager.Redrawable;
+import edu.iis.powp.command.manager.redrawable.Redrawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,6 +140,10 @@ public class ModificationPlotterWrapper implements IPlotter, PlotModifier, Redra
         return instance + " with plot modifications";
     }
 
+    /**
+    * Implementation of {@link Redrawable#isRedrawable()} 
+    * that checks for availability of redraw functionality
+    */
 	@Override
 	public boolean isRedrawable() {
 		return instance instanceof Redrawable;

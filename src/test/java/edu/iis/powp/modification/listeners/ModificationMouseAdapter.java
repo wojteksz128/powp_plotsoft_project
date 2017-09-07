@@ -1,13 +1,9 @@
 package edu.iis.powp.modification.listeners;
 
 import java.awt.event.MouseEvent;
-import java.util.logging.Logger;
-
 import javax.swing.event.MouseInputAdapter;
 
 import edu.iis.powp.appext.FeaturesManager;
-import edu.iis.powp.command.IPlotterCommand;
-import edu.iis.powp.command.manager.RedrawablePlotterDecorator;
 import edu.iis.powp.plot.modification.PlotModification;
 import edu.iis.powp.plot.modification.PlotModifier;
 
