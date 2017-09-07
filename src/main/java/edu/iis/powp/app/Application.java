@@ -11,7 +11,6 @@ import edu.iis.powp.app.gui.PlotterGUI;
 import edu.iis.powp.app.gui.events.SelectDriverMenuOptionListener;
 import edu.iis.powp.app.gui.events.SelectJFrameWindowMenuOptionListener;
 import edu.iis.powp.app.gui.events.SelectWindowComponentMenuOptionListener;
-import edu.iis.powp.modification.ModifierDriverManager;
 import edu.iis.powp.observer.Subscriber;
 import edu.iis.powp.window.WindowComponent;
 
