@@ -8,7 +8,7 @@ public class ScalePlotModification extends PlotModification {
     /**
      * Instance of similar plot modification - {@link StretchPlotModification}.
      */
-    private final PlotModification stretchPlotModification;
+    private final StretchPlotModification stretchPlotModification;
 
     /**
      * Scale of plot
@@ -21,6 +21,8 @@ public class ScalePlotModification extends PlotModification {
 
 	public void setScale(float scale) {
 		this.scale = scale;
+		stretchPlotModification.setxAxis(scale);
+		stretchPlotModification.setyAxis(scale);
 	}
 
 	/**

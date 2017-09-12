@@ -7,38 +7,42 @@ import java.awt.event.MouseListener;
 import javax.swing.JComponent;
 
 import edu.iis.powp.app.Application;
+import edu.iis.powp.modification.listeners.handlers.PointerMouseHandler;
+import edu.iis.powp.modification.listeners.handlers.ReflectMouseHandler;
+import edu.iis.powp.modification.listeners.handlers.RotationMouseHandler;
+import edu.iis.powp.modification.listeners.handlers.ScaleMouseHandler;
+import edu.iis.powp.modification.listeners.handlers.StretchMouseHandler;
+import edu.iis.powp.modification.listeners.handlers.TranslationMouseHandler;
 
 public class ModifyButtonListener implements ActionListener {
-	Application application;
+	ModificationMouseAdapter mouseAdapter;
 	
-	public ModifyButtonListener(Application application) {
+	public ModifyButtonListener(ModificationMouseAdapter mouseAdapter) {
 		super();
-		this.application = application;
+		this.mouseAdapter = mouseAdapter;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JComponent source = (JComponent)e.getSource();
-		for(MouseListener ml : application.getFreePanel().getMouseListeners()) {
-			application.getFreePanel().removeMouseListener(ml);
-		}
 		switch(source.getName()) {
 		case "moveButton":
-			application.getFreePanel().addMouseListener(new TranslationMouseListener());
+			mouseAdapter.setHandler(new TranslationMouseHandler());
 			break;
 		case "rotateButton":
-			application.getFreePanel().addMouseListener(new RotationMouseListener());
+			mouseAdapter.setHandler(new RotationMouseHandler());
 			break;
 		case "scaleButton":
-			application.getFreePanel().addMouseListener(new ScaleMouseListener());
+			mouseAdapter.setHandler(new ScaleMouseHandler());
 			break;
 		case "stretchButton":
-			application.getFreePanel().addMouseListener(new StretchMouseListener());
+			mouseAdapter.setHandler(new StretchMouseHandler());
 			break;
 		case "reflectButton":
-			application.getFreePanel().addMouseListener(new ReflectMouseListener());
+			mouseAdapter.setHandler(new ReflectMouseHandler());
 			break;
 		case "PointerButton":
+			mouseAdapter.setHandler(new PointerMouseHandler());
 			break;
 		}
 		

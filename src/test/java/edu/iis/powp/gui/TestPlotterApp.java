@@ -28,6 +28,7 @@ import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
 import edu.iis.powp.events.SelectStretchHeightOneAndHalfOptionListener;
 import edu.iis.powp.events.SelectTestFigure2OptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.modification.listeners.ModificationMouseAdapter;
 import edu.iis.powp.modification.listeners.ModifyButtonListener;
 import edu.iis.powp.plot.modification.ModificationPlotterWrapper;
 import edu.iis.powp.plot.modification.PlotModifier;
@@ -143,7 +144,9 @@ public class TestPlotterApp {
 	 */
 	private static void setupButtons(Application application, JToolBar toolbar) {
 		ButtonGroup button_group = new ButtonGroup();
-		ModifyButtonListener toolBarListener = new ModifyButtonListener(application);
+		ModificationMouseAdapter adapter = new ModificationMouseAdapter();
+		application.getFreePanel().addMouseListener(adapter);
+		ModifyButtonListener toolBarListener = new ModifyButtonListener(adapter);
 		
 		JToggleButton pointerBtn = new JToggleButton("POINTER");
 		pointerBtn.setName("pointerButton");
