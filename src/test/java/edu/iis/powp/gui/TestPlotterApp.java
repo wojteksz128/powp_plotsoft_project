@@ -1,17 +1,5 @@
 package edu.iis.powp.gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.LineAdapterPlotterDriver;
@@ -20,12 +8,8 @@ import edu.iis.powp.appext.FeaturesManager;
 import edu.iis.powp.command.gui.CommandManagerWindow;
 import edu.iis.powp.command.gui.CommandManagerWindowCommandChangeObserver;
 import edu.iis.powp.command.manager.redrawable.RedrawablePlotterDecorator;
-import edu.iis.powp.events.SelectHalfScaleOptionListener;
 import edu.iis.powp.events.SelectLoadSecretCommandOptionListener;
-import edu.iis.powp.events.SelectMoveRightOptionListener;
-import edu.iis.powp.events.SelectRotate90DegreesOptionListener;
 import edu.iis.powp.events.SelectRunCurrentCommandOptionListener;
-import edu.iis.powp.events.SelectStretchHeightOneAndHalfOptionListener;
 import edu.iis.powp.events.SelectTestFigure2OptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.modification.listeners.ModifyButtonListener;
@@ -33,6 +17,13 @@ import edu.iis.powp.plot.modification.ModificationPlotterWrapper;
 import edu.iis.powp.plot.modification.PlotModifier;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.LineFactory;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestPlotterApp {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -58,10 +49,6 @@ public class TestPlotterApp {
 	 */
 	private static void setupCommandTests(Application application) {
 		application.addTest("Load secret command", new SelectLoadSecretCommandOptionListener());
-		application.addTest("Load moving right exected command", new SelectMoveRightOptionListener());
-		application.addTest("Load rotation 90 degrees command", new SelectRotate90DegreesOptionListener());
-		application.addTest("Load stretch 1.5 height command", new SelectStretchHeightOneAndHalfOptionListener());
-		application.addTest("Load half scale command", new SelectHalfScaleOptionListener());
 		application.addTest("Run command", new SelectRunCurrentCommandOptionListener());
 
 	}
