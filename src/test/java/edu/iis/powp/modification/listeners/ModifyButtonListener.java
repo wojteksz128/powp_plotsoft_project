@@ -1,41 +1,37 @@
 package edu.iis.powp.modification.listeners;
 
+import edu.iis.powp.modification.listeners.handlers.*;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-
-import javax.swing.JComponent;
-
-import edu.iis.powp.app.Application;
 
 public class ModifyButtonListener implements ActionListener {
-	Application application;
+	ModificationMouseAdapter mouseAdapter;
 	
-	public ModifyButtonListener(Application application) {
+	public ModifyButtonListener(ModificationMouseAdapter mouseAdapter) {
 		super();
-		this.application = application;
+		this.mouseAdapter = mouseAdapter;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JComponent source = (JComponent)e.getSource();
-		for(MouseListener ml : application.getFreePanel().getMouseListeners()) {
-			application.getFreePanel().removeMouseListener(ml);
-		}
 		switch(source.getName()) {
 		case "moveButton":
-			application.getFreePanel().addMouseListener(new TranslationMouseListener());
+			mouseAdapter.setHandler(new TranslationMouseHandler());
 			break;
 		case "rotateButton":
-			application.getFreePanel().addMouseListener(new RotationMouseListener());
+			mouseAdapter.setHandler(new RotationMouseHandler());
 			break;
 		case "scaleButton":
-			application.getFreePanel().addMouseListener(new ScaleMouseListener());
+			mouseAdapter.setHandler(new ScaleMouseHandler());
 			break;
 		case "stretchButton":
-			application.getFreePanel().addMouseListener(new StretchMouseListener());
+			mouseAdapter.setHandler(new StretchMouseHandler());
 			break;
 		case "PointerButton":
+			mouseAdapter.setHandler(new PointerMouseHandler());
 			break;
 		}
 		

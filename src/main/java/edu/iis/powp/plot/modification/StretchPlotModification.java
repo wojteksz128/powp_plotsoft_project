@@ -10,6 +10,11 @@ public class StretchPlotModification extends PlotModification {
      */
     private float xAxis;
 
+	/**
+     * Y-axis stretching scale. If {@code 1.0}, then no stretching.
+     */
+    private float yAxis;
+    
     public float getxAxis() {
 		return xAxis;
 	}
@@ -26,10 +31,6 @@ public class StretchPlotModification extends PlotModification {
 		this.yAxis = yAxis;
 	}
 
-	/**
-     * Y-axis stretching scale. If {@code 1.0}, then no stretching.
-     */
-    private float yAxis;
 
     /**
      * Constructor of {@link StretchPlotModification}.
