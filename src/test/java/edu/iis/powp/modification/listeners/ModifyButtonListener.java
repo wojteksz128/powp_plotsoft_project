@@ -35,9 +35,6 @@ public class ModifyButtonListener implements ActionListener {
 		case "stretchButton":
 			application.getFreePanel().addMouseListener(new StretchMouseListener());
 			break;
-		case "reflectButton":
-			application.getFreePanel().addMouseListener(new ReflectMouseListener());
-			break;
 		case "PointerButton":
 			break;
 		}

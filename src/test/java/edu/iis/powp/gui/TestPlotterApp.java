@@ -162,12 +162,6 @@ public class TestPlotterApp {
 		button_group.add(stretchBtn);
         toolbar.add(stretchBtn);
         
-		JToggleButton reflectBtn = new JToggleButton("REFLECT");
-		reflectBtn.setName("reflectButton");
-		reflectBtn.addActionListener(toolBarListener);
-		button_group.add(reflectBtn);
-        toolbar.add(reflectBtn);
-        
 		JButton resetBtn = new JButton("RESET");
 		resetBtn.setName("resetButton");
 		resetBtn.addActionListener(new ActionListener() {
